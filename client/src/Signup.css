@@ -1,0 +1,26 @@
+.parentDiv {
+  width: 400px !important;
+  padding: 20px !important;
+  margin-top: 10px !important;
+}
+
+.mt {
+  padding-top: 160px !important;
+}
+.mr {
+  margin-right: 10px !important;
+}
+
+.mb {
+  margin-bottom: 10px !important;
+}
+
+.btnCenter {
+  margin: auto !important;
+  display: block !important;
+}
+
+.flex {
+  display: flex !important;
+  justify-content: center !important;
+}
