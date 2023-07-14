@@ -1,0 +1,38 @@
+.parentDivAddCourse {
+  width: 600px;
+  min-width: 300px !important;
+  padding: 20px !important;
+  margin-top: 10px !important;
+  box-shadow: 0 4px 8px 0 rgba(2e, 7d, 32, 0.2) !important ;
+  border-radius: 5px !important;
+  background-color: #fff !important;
+  padding: 20px !important;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.mt {
+  padding-top: 100px !important;
+}
+.mr {
+  margin-right: 10px !important;
+}
+
+.mb {
+  margin-bottom: 10px !important;
+}
+
+.textInput {
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.icons {
+  font-size: 20px !important;
+  margin: 0 5px !important;
+}

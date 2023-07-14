@@ -1,0 +1,5 @@
+.dashboardContainer {
+  display: flex;
+  justify-content: space-between !important;
+  width: 100% !important;
+}

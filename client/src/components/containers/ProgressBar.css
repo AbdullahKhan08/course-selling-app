@@ -1,0 +1,14 @@
+.pieParent {
+  display: flex;
+}
+
+.pieBackground {
+  background-color: var(--main-background) !important;
+  height: 100% !important;
+  padding: 10px;
+  flex: 3 !important;
+}
+
+.typo {
+  padding: 9px;
+}

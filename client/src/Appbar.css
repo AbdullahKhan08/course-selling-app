@@ -1,9 +1,0 @@
-.parent {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-}
-
-.ml {
-  margin-left: 9px !important;
-}

@@ -1,0 +1,60 @@
+.parentDiv {
+  width: 400px;
+  min-width: 300px !important;
+  padding: 20px !important;
+  margin-top: 10px !important;
+  box-shadow: 0 4px 8px 0 rgba(2e, 7d, 32, 0.2) !important ;
+  border-radius: 5px !important;
+  background-color: #fff !important;
+  padding: 20px !important;
+}
+
+.mt {
+  padding-top: 130px !important;
+}
+.mr {
+  margin-right: 10px !important;
+}
+
+.mb {
+  margin-bottom: 10px !important;
+}
+
+.textInput {
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.icons {
+  font-size: 20px !important;
+  margin: 0 5px !important;
+}
+
+.signUpBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.line {
+  border-bottom: 1px solid #2e7d32;
+  width: 70%;
+  margin: 10px auto;
+}
+
+.alreadyAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0 !important;
+}
+
+.text-design {
+  color: #2e7d32;
+  padding: 4px 8px;
+}
+
+.btn-design {
+  padding: 4px 8px;
+}

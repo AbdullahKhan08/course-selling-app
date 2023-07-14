@@ -1,0 +1,8 @@
+body {
+  --main-color: gray;
+  --main-background: ##eeeeee;
+}
+
+.text-center {
+  text-align: center !important;
+}
