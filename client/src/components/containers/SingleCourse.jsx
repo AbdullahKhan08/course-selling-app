@@ -1,6 +1,8 @@
 import React from 'react'
 import { Card, Typography, Button } from '@mui/material'
 import './SingleCourse.css'
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 
 const SingleCourse = ({ title, published, id, handleDelete }) => {
   return (
@@ -30,7 +32,8 @@ const SingleCourse = ({ title, published, id, handleDelete }) => {
           <div className="course-btn-group">
             <div className="btn-item">
               <Button size="small" variant="contained" color="success">
-                Edit
+                {/* Edit */}
+                <BorderColorOutlinedIcon className="btn-icons" />
               </Button>
             </div>
             <div className="btn-item">
@@ -40,7 +43,8 @@ const SingleCourse = ({ title, published, id, handleDelete }) => {
                 variant="contained"
                 color="error"
               >
-                Delete
+                {/* Delete */}
+                <DeleteOutlineOutlinedIcon className="btn-icons" />
               </Button>
             </div>
           </div>

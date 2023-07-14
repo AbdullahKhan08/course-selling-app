@@ -50,9 +50,9 @@
 }
 
 .btn-item {
-  margin: 0 7px;
-  padding: 0 7px;
-  width: 25%;
+  margin: 0 6px;
+  padding: 0px;
+  /* width: 25%; */
 }
 
 .text-items {
@@ -72,4 +72,11 @@
   display: flex;
   flex-wrap: wrap;
   width: 50%;
+}
+
+.btn-icons {
+  font-size: 23px !important;
+  padding: 2px !important;
+  margin: 3px !important;
+  border-radius: 10px !important;
 }
