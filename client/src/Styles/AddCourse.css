@@ -3,8 +3,8 @@
   min-width: 300px !important;
   padding: 20px !important;
   margin-top: 10px !important;
-  box-shadow: 0 4px 8px 0 rgba(2e, 7d, 32, 0.2) !important ;
-  border-radius: 5px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important ;
+  border-radius: 20px !important;
   background-color: #fff !important;
   padding: 20px !important;
 }
@@ -17,7 +17,7 @@
 }
 
 .mt {
-  padding-top: 100px !important;
+  padding-top: 90px !important;
 }
 .mr {
   margin-right: 10px !important;

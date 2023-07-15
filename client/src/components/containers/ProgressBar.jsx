@@ -32,9 +32,11 @@ function ProgressBar() {
 
   if (published === 0 && notpublished === 0) {
     return (
-      <div>
+      <div style={{ height: '100%' }}>
         <Paper
           style={{
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1)',
+            borderRadius: '20px',
             backgroundColor: 'var(--main-background)',
             height: '80vh',
             padding: '20px 10px',
@@ -43,12 +45,11 @@ function ProgressBar() {
           }}
         >
           <Typography style={{ textAlign: 'center' }} variant="h5">
-            {' '}
             You have no courses yet
           </Typography>
 
           <Chart
-            style={{ visibility: 'visible' }}
+            style={{ visibility: 'visible', width: '300px', height: '300px' }}
             width={300}
             height={300}
             data={[]}
@@ -67,31 +68,44 @@ function ProgressBar() {
   }
 
   return (
-    <div>
+    <div style={{ height: '100vh' }}>
       <div className="pieParent">
         <Paper
           style={{
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1)',
+            borderRadius: '20px',
             backgroundColor: 'var(--main-background)',
             height: '80vh',
             padding: '20px 10px',
             margin: '20px 10px',
           }}
-          //   className="pieBackground"
         >
           <Chart data={data}>
             <PieSeries valueField="value" argumentField="argument" />
-            <Title text="Courses Launched insights" />
+            <Typography variant="h5">Courses Launched insights</Typography>
           </Chart>
           <div className="insights">
-            <Typography variant="h5" className="typo">
-              Total Courses: {published + notpublished}
-            </Typography>
-            <Typography className="typo" variant="h6">
-              Published: {published}
-            </Typography>
-            <Typography className="typo" variant="h6">
-              Not Published: {notpublished}
-            </Typography>
+            <div className="insight-item">
+              <Typography variant="h5" className="typo">
+                Total Courses:{' '}
+                <span className="dynamic-element">
+                  {published + notpublished}
+                </span>
+              </Typography>
+            </div>
+
+            <div className="insight-item">
+              <Typography className="typo published" variant="h6">
+                Launched: <span className="dynamic-element">{published}</span>
+              </Typography>
+            </div>
+
+            <div className="insight-item">
+              <Typography className="typo notPublished" variant="h6">
+                Not Launched:{' '}
+                <span className="dynamic-element">{notpublished}</span>
+              </Typography>
+            </div>
           </div>
         </Paper>
       </div>

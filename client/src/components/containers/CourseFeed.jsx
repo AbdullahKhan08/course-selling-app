@@ -14,7 +14,7 @@ function CourseFeed() {
         setCourses(data.courses)
       })
     })
-  }, [])
+  }, [courses])
 
   function ondeleteClick(id) {
     const response = fetch('http://localhost:3000/admin/courses/' + id, {
@@ -30,10 +30,30 @@ function CourseFeed() {
       })
     })
   }
+
+  function onupdateClick(id) {
+    const response = fetch('http://localhost:3000/admin/courses/' + id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    }).then((response) => {
+      response.json().then((data) => {
+        console.log(data)
+        // setCourses(courses.filter((course) => course.id !== id))
+        alert('course updated')
+      })
+    })
+  }
+
   return (
     <div>
       <div>
-        <Typography style={{ paddingBottom: '12px' }} variant="h5">
+        <Typography
+          style={{ padding: '20px 10px', margin: '20px 10px' }}
+          variant="h5"
+        >
           My Courses
         </Typography>
         <div>
@@ -44,6 +64,7 @@ function CourseFeed() {
               title={course.title}
               published={course.published}
               handleDelete={ondeleteClick}
+              handleUpdate={onupdateClick}
             />
           ))}
         </div>

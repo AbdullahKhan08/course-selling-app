@@ -1,7 +1,9 @@
 .parent {
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important;
   align-items: center;
+  border-radius: 12px;
   padding: 0 10px;
 }
 

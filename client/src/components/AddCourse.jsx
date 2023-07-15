@@ -77,7 +77,7 @@ function AddCourse() {
   if (userEmail) {
     return (
       <div>
-        <div className=" flex mt">
+        <div className="flex mt">
           <Typography variant="h4">Create Course Page</Typography>
         </div>
         <div className="flex">

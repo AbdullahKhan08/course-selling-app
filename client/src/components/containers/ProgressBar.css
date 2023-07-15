@@ -10,5 +10,32 @@
 }
 
 .typo {
-  padding: 9px;
+  padding: 8px 9px !important;
+  font-weight: bold !important;
+  font-size: 22px !important;
+  width: 80%;
+}
+
+.insights {
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.insight-item {
+  width: 90% !important;
+  /* font-size: 100px !important; */
+}
+
+.dynamic-element {
+  font-size: 22px;
+  float: right;
+}
+
+.published {
+  color: #42a5f5;
+}
+
+.notPublished {
+  color: #ff7043;
 }
