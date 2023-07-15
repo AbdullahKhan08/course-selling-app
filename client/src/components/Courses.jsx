@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Course from './Course'
 import '../Styles/courses.css'
-import { Button, Typography } from '@mui/material'
+import Course from './Course'
 import { useNavigate } from 'react-router-dom'
 import Sidebar from './containers/Sidebar'
 import ErrorComponent from './ErrorComponent'
 function Courses() {
   const [courses, setCourses] = useState([])
-  const [token, setToken] = useState(null)
+  const [userEmail, setUserEmail] = useState('')
   const navigate = useNavigate()
 
   const fetchCourses = () => {
@@ -27,13 +26,15 @@ function Courses() {
   }, [])
 
   useEffect(() => {
-    const checkToken = async () => {
-      const token = localStorage.getItem('token')
-      if (token) {
-        setToken(true)
-      }
-    }
-    checkToken()
+    fetch('http://localhost:3000/admin/me', {
+      method: 'GET',
+      headers: { authorization: 'Bearer ' + localStorage.getItem('token') },
+    }).then((response) => {
+      response.json().then((data) => {
+        console.log(data)
+        setUserEmail(data.username)
+      })
+    })
   }, [])
 
   function ondeleteClick(id) {
@@ -51,36 +52,36 @@ function Courses() {
     })
   }
 
-  return (
-    <>
+  if (userEmail) {
+    return (
       <div>
-        {!token ? (
-          <ErrorComponent message={'Please sign in to access courses'} />
-        ) : (
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-              <div className="sidebar-container">
-                <Sidebar />
-              </div>
-              <div className="coursesMain">
-                {courses?.map((course) => (
-                  <Course
-                    key={course.id}
-                    id={course.id}
-                    title={course.title}
-                    description={course.description}
-                    image={course.image}
-                    price={course.price}
-                    published={course.published}
-                    handleDelete={ondeleteClick}
-                  />
-                ))}
-              </div>
-            </div>
+        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <div className="sidebar-container">
+            <Sidebar />
           </div>
-        )}
+          <div className="coursesMain">
+            {courses?.map((course) => (
+              <Course
+                key={course.id}
+                id={course.id}
+                title={course.title}
+                description={course.description}
+                image={course.image}
+                price={course.price}
+                published={course.published}
+                handleDelete={ondeleteClick}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </>
+    )
+  }
+
+  return (
+    <div>
+      <ErrorComponent message={'Please sign in to access courses'} />
+    </div>
   )
 }
 

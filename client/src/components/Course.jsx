@@ -1,6 +1,7 @@
 import { Button, Card, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
 import '../Styles/courses.css'
+import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 
 function Course({
   title,
@@ -15,35 +16,61 @@ function Course({
     <div className="courses_container">
       <Card className="course">
         <img className="imgDisplay" src={image}></img>
+
         <div className="courseInfo">
-          <Typography className="course-title" variant="h5">
-            {title}
-          </Typography>
-          <Typography className="course-description" variant="h5">
-            {description}
-          </Typography>
-          <Typography variant="h5">{price}$</Typography>
+          <div className="title-div">
+            <Typography className="course-title text-center bold" variant="h5">
+              {title}
+            </Typography>
+          </div>
+          <div className="desc-div">
+            <Typography className="course-description" variant="h6">
+              {description}
+            </Typography>
+          </div>
+          <div className="price-div">
+            <Typography variant="h6" className="course-price">
+              price: {price} $
+            </Typography>
+          </div>
         </div>
 
         <div className="btn-group">
-          {!published ? (
-            <h5 className="notLaunched">not Launched</h5>
-          ) : (
-            <h5 className="launched">Launched</h5>
-          )}
+          <div className="status-text-item">
+            {!published ? (
+              <Typography variant="h6" className="courses-status notLaunched">
+                Not Launched
+              </Typography>
+            ) : (
+              <Typography variant="h6" className="courses-status launched">
+                Launched
+              </Typography>
+            )}
+          </div>
 
-          <div>
-            <Button size="medium" className="editBtn" variant="contained">
-              Edit
-            </Button>
-            <Button
-              size="medium"
-              onClick={() => handleDelete(id)}
-              className="deleteBtn"
-              variant="contained"
-            >
-              Delete
-            </Button>
+          <div className="button-group">
+            <div className="course-btn-item">
+              <Button
+                size="small"
+                className="button-icon"
+                variant="contained"
+                color="primary"
+              >
+                <BorderColorOutlinedIcon className="btn-icons" />
+              </Button>
+            </div>
+
+            <div className="course-btn-item">
+              <Button
+                size="small"
+                onClick={() => handleDelete(id)}
+                className="button-icon"
+                variant="contained"
+                color="error"
+              >
+                <DeleteOutlineOutlinedIcon className="btn-icons" />
+              </Button>
+            </div>
           </div>
         </div>
       </Card>

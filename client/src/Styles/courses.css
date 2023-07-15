@@ -1,70 +1,62 @@
+.coursesMain {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  width: 80vw;
+}
+
 .courses_container {
-  min-width: 350px;
-  min-height: 400px;
+  width: 350px;
+  height: 441px;
   padding: 10px 10px;
   margin: 10px 10px;
   border-radius: 30px !important;
 }
 
-.coursesMain {
-  display: flex;
-  /* align-items: center; */
-  /* justify-content: flex-start; */
-  flex-wrap: wrap;
-  padding: 0 10px;
-  width: 80vw;
-  /* flex: 2; */
-}
-
-.sidebar-container {
-  height: 100vh;
+.course {
+  min-height: 441px;
+  border-radius: 20px !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
 .errorClass {
   text-align: center;
   margin-top: 30px;
 }
+
 .imgDisplay {
   margin: 6px;
   width: 100%;
   height: 250px;
-  border: none;
+  border: none !important;
 }
 
 .course-title {
   font-size: 18px;
-  font-weight: bold;
-  margin: 0 9px;
+  margin: 0 9px !important;
 }
 
 .courseInfo {
-  padding: 10px;
+  padding: 0 10px;
+  margin: 0 6px;
 }
 
 .course-description {
-  font-size: 16px;
-  margin: 0 9px;
-  line-height: 1.5;
+  font-size: 18px;
+  margin: 0 9px !important;
 }
 
 .course-price {
-  font-size: 16px;
-  margin: 0 9px;
+  font-size: 16px !important;
+  margin: 0 9px !important;
 }
 
 .notLaunched {
-  color: white;
-  border-radius: 10px;
-  background-color: rgb(255, 5, 5);
-  padding: 6px;
-  margin-left: 7px;
+  background-color: #d32f2f;
 }
 .launched {
-  color: white;
-  border-radius: 10px;
-  background-color: rgb(0, 158, 0);
-  padding: 6px;
-  margin-left: 7px;
+  background-color: #2e7d32;
 }
 
 .btn-group {
@@ -73,5 +65,49 @@
   justify-content: space-between;
 }
 
-/* .editBtn {
-} */
+.button-group {
+  display: flex;
+}
+
+/* from different file  */
+
+.button-icon {
+  padding: 4px 8px !important;
+  padding-left: 3px !important;
+  padding-right: 1px !important;
+  border-radius: 10px !important;
+}
+
+.btn-icons {
+  font-size: 20px !important;
+  padding: 2px !important;
+  margin: 3px !important;
+  border-radius: 10px !important;
+}
+
+.course-btn-item {
+  margin: 0 4px;
+}
+
+.courses-status {
+  font-size: 13px !important;
+  text-align: center;
+  color: white;
+  padding: 5px 0;
+  border-radius: 10px;
+}
+
+.status-text-item {
+  margin: 0 4px;
+  padding: 0 5px;
+  width: 28%;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.desc-div {
+  display: flex;
+  flex-wrap: wrap;
+}

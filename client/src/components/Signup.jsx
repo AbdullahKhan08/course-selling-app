@@ -24,8 +24,12 @@ function Signup() {
       response.json().then((data) => {
         try {
           console.log(data)
-          if (response.status == 201) {
+          if (response.status === 201) {
+            alert(data.msg)
             navigate('/signin')
+          }
+          if (response.status === 400 || response.status === 403) {
+            alert(data.msg)
           }
         } catch (error) {
           console.log(error)

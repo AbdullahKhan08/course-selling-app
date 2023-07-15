@@ -42,8 +42,6 @@ function CourseFeed() {
               key={course.id}
               id={course.id}
               title={course.title}
-              // description={course.description}
-              // price={course.price}
               published={course.published}
               handleDelete={ondeleteClick}
             />

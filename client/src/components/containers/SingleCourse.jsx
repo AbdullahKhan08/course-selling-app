@@ -31,19 +31,23 @@ const SingleCourse = ({ title, published, id, handleDelete }) => {
 
           <div className="course-btn-group">
             <div className="btn-item">
-              <Button size="small" variant="contained" color="success">
-                {/* Edit */}
+              <Button
+                className="button-icon"
+                size="small"
+                variant="contained"
+                color="success"
+              >
                 <BorderColorOutlinedIcon className="btn-icons" />
               </Button>
             </div>
             <div className="btn-item">
               <Button
+                className="button-icon"
                 size="small"
                 onClick={() => handleDelete(id)}
                 variant="contained"
                 color="error"
               >
-                {/* Delete */}
                 <DeleteOutlineOutlinedIcon className="btn-icons" />
               </Button>
             </div>

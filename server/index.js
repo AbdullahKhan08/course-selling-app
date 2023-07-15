@@ -52,7 +52,7 @@ app.post('/admin/signup', (req, res) => {
   })
 
   if (existingAdmin) {
-    return res.status(400).json({ msg: 'admin already exists' })
+    return res.status(403).json({ msg: 'admin already exists' })
   }
 
   let uniqueID = Math.floor(Math.random() * 1000000)
@@ -90,7 +90,7 @@ app.post('/admin/login', (req, res) => {
 })
 
 app.get('/admin/me', jwtAuthentication, (req, res) => {
-  res.status(200).json({ username: req.user.username })
+  return res.status(200).json({ username: req.user.username })
 })
 
 app.post('/admin/courses', jwtAuthentication, (req, res) => {
@@ -116,7 +116,7 @@ app.get('/admin/courses/insights', jwtAuthentication, (req, res) => {
     }
   })
 
-  res.status(200).json({
+  return res.status(200).json({
     published: published,
     notPublished: notPublished,
   })
