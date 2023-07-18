@@ -37,6 +37,7 @@ function CourseFeed() {
         setCourses(courses.filter((course) => course.id !== id))
       })
     })
+    window.location = '/dashboard'
   }
 
   return (

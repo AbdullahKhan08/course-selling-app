@@ -150,6 +150,21 @@ app.delete('/admin/courses/:courseId', jwtAuthentication, (req, res) => {
     return res.status(404).json({ msg: 'Course not found' })
   }
 })
+
+app.get('/admin/courses/:courseId', jwtAuthentication, (req, res) => {
+  // logic to get single courses
+  const { courseId } = req.params
+  let courseIndex = COURSES.findIndex((course) => {
+    return course.id === Number(courseId)
+  })
+
+  if (courseIndex > -1) {
+    return res.status(200).json({ course: COURSES[courseIndex] })
+  }
+
+  return res.status(404).json({ msg: 'Course not found' })
+})
+
 app.get('/admin/courses', jwtAuthentication, (req, res) => {
   // logic to get all courses
   res.status(200).json({ courses: COURSES })
