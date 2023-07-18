@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Paper from '@material-ui/core/Paper'
-import { Chart, PieSeries, Title } from '@devexpress/dx-react-chart-material-ui'
-import { Animation } from '@devexpress/dx-react-chart'
+import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui'
 import { Typography } from '@mui/material'
 import './ProgressBar.css'
 
@@ -10,7 +9,14 @@ function ProgressBar() {
   const [notpublished, setNotPublished] = useState(0)
   const [data, setData] = useState([])
 
-  useEffect(() => {
+  function changeData() {
+    setData([
+      { argument: 'published', value: published },
+      { argument: 'Not published', value: notpublished },
+    ])
+  }
+
+  function fetchInsights() {
     fetch('http://localhost:3000/admin/courses/insights', {
       method: 'GET',
       headers: {
@@ -22,50 +28,18 @@ function ProgressBar() {
         console.log(d)
         setPublished(d.published)
         setNotPublished(d.notPublished)
-        setData([
-          { argument: 'published', value: published },
-          { argument: 'Not published', value: notpublished },
-        ])
+        console.log('page render')
       })
     })
+  }
+
+  useEffect(() => {
+    fetchInsights()
   }, [data])
 
-  if (published === 0 && notpublished === 0) {
-    return (
-      <div style={{ height: '100%' }}>
-        <Paper
-          style={{
-            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1)',
-            borderRadius: '20px',
-            backgroundColor: 'var(--main-background)',
-            height: '80vh',
-            padding: '20px 10px',
-            margin: '20px 10px',
-            width: '20vw',
-          }}
-        >
-          <Typography style={{ textAlign: 'center' }} variant="h5">
-            You have no courses yet
-          </Typography>
-
-          <Chart
-            style={{ visibility: 'visible', width: '300px', height: '300px' }}
-            width={300}
-            height={300}
-            data={[]}
-          >
-            <PieSeries
-              emptyIndicator={true}
-              valueField="value"
-              argumentField="argument"
-              innerRadius={0.6}
-            />
-            <Animation />
-          </Chart>
-        </Paper>
-      </div>
-    )
-  }
+  useEffect(() => {
+    changeData()
+  }, [published, notpublished])
 
   return (
     <div style={{ height: '100vh' }}>
@@ -87,7 +61,7 @@ function ProgressBar() {
           <div className="insights">
             <div className="insight-item">
               <Typography variant="h5" className="typo">
-                Total Courses:{' '}
+                Total Courses:
                 <span className="dynamic-element">
                   {published + notpublished}
                 </span>
@@ -102,7 +76,7 @@ function ProgressBar() {
 
             <div className="insight-item">
               <Typography className="typo notPublished" variant="h6">
-                Not Launched:{' '}
+                Not Launched:
                 <span className="dynamic-element">{notpublished}</span>
               </Typography>
             </div>

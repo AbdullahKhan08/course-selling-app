@@ -37,6 +37,12 @@ function Courses() {
     })
   }, [])
 
+  function handleEditClick(id) {
+    navigate('/EditCourse', {
+      state: { id: id },
+    })
+  }
+
   function ondeleteClick(id) {
     const response = fetch('http://localhost:3000/admin/courses/' + id, {
       method: 'DELETE',
@@ -70,6 +76,7 @@ function Courses() {
                 price={course.price}
                 published={course.published}
                 handleDelete={ondeleteClick}
+                handleEdit={handleEditClick}
               />
             ))}
           </div>

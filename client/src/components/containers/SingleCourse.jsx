@@ -4,7 +4,11 @@ import './SingleCourse.css'
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 
-const SingleCourse = ({ title, published, id, handleDelete, handleUpdate }) => {
+import { useNavigate } from 'react-router-dom'
+
+const SingleCourse = ({ title, published, id, handleDelete, handleEdit }) => {
+  const navigate = useNavigate()
+
   return (
     <div className="singleCourseContainer">
       <Card className="cardDesign">
@@ -34,7 +38,7 @@ const SingleCourse = ({ title, published, id, handleDelete, handleUpdate }) => {
               <Button
                 className="button-icon"
                 size="small"
-                onClick={() => handleUpdate(id)}
+                onClick={() => handleEdit(id)}
                 variant="contained"
                 color="success"
               >

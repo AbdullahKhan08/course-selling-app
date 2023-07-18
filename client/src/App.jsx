@@ -7,6 +7,7 @@ import AdminDashboard from './components/AdminDashboard'
 import AddCourse from './components/AddCourse'
 import Courses from './components/Courses'
 import './App.css'
+import EditCourse from './components/EditCourse'
 
 function App() {
   return (
@@ -15,12 +16,13 @@ function App() {
         <Appbar />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/signin" element={<Signin />} />
-          <Route path="/addcourse" element={<AddCourse />} />
-          <Route path="/courses" element={<Courses />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
+          <Route path="/addcourse" element={<AddCourse />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/EditCourse" element={<EditCourse />} />
         </Routes>
       </Router>
     </div>

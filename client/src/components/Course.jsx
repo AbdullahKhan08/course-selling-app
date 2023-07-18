@@ -11,6 +11,7 @@ function Course({
   published,
   id,
   handleDelete,
+  handleEdit,
 }) {
   return (
     <div className="courses_container">
@@ -55,6 +56,7 @@ function Course({
                 className="button-icon"
                 variant="contained"
                 color="primary"
+                onClick={() => handleEdit(id)}
               >
                 <BorderColorOutlinedIcon className="btn-icons" />
               </Button>

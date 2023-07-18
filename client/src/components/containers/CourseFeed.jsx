@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import SingleCourse from './SingleCourse'
 import { Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+
 function CourseFeed() {
+  const navigate = useNavigate()
   const [courses, setCourses] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:3000/admin/courses', {
       method: 'GET',
-
       headers: { authorization: 'Bearer ' + localStorage.getItem('token') },
     }).then((response) => {
       response.json().then((data) => {
@@ -15,6 +17,12 @@ function CourseFeed() {
       })
     })
   }, [courses])
+
+  function handleEditClick(id) {
+    navigate('/EditCourse', {
+      state: { id: id },
+    })
+  }
 
   function ondeleteClick(id) {
     const response = fetch('http://localhost:3000/admin/courses/' + id, {
@@ -27,22 +35,6 @@ function CourseFeed() {
       response.json().then((data) => {
         console.log(data)
         setCourses(courses.filter((course) => course.id !== id))
-      })
-    })
-  }
-
-  function onupdateClick(id) {
-    const response = fetch('http://localhost:3000/admin/courses/' + id, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    }).then((response) => {
-      response.json().then((data) => {
-        console.log(data)
-        // setCourses(courses.filter((course) => course.id !== id))
-        alert('course updated')
       })
     })
   }
@@ -64,7 +56,7 @@ function CourseFeed() {
               title={course.title}
               published={course.published}
               handleDelete={ondeleteClick}
-              handleUpdate={onupdateClick}
+              handleEdit={handleEditClick}
             />
           ))}
         </div>
