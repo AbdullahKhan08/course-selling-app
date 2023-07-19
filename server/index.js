@@ -103,7 +103,7 @@ app.get('/admin/me', jwtAuthentication, (req, res) => {
 app.post('/admin/courses', jwtAuthentication, (req, res) => {
   // logic to create a course
   const newCourse = req.body
-  newCourse.id = COURSES.length + 1
+  newCourse.id = Date.now()
   COURSES.push(newCourse)
   fs.writeFileSync('./courses.json', JSON.stringify(COURSES))
   return res.status(201).json({
