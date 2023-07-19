@@ -9,6 +9,18 @@ function Courses() {
   const [userEmail, setUserEmail] = useState('')
   const navigate = useNavigate()
 
+  useEffect(() => {
+    fetch('http://localhost:3000/admin/me', {
+      method: 'GET',
+      headers: { authorization: 'Bearer ' + localStorage.getItem('token') },
+    }).then((response) => {
+      response.json().then((data) => {
+        console.log(data)
+        setUserEmail(data.username)
+      })
+    })
+  }, [])
+
   const fetchCourses = () => {
     fetch('http://localhost:3000/admin/courses', {
       method: 'GET',
@@ -23,18 +35,6 @@ function Courses() {
 
   useEffect(() => {
     fetchCourses()
-  }, [])
-
-  useEffect(() => {
-    fetch('http://localhost:3000/admin/me', {
-      method: 'GET',
-      headers: { authorization: 'Bearer ' + localStorage.getItem('token') },
-    }).then((response) => {
-      response.json().then((data) => {
-        console.log(data)
-        setUserEmail(data.username)
-      })
-    })
   }, [])
 
   function handleEditClick(id) {

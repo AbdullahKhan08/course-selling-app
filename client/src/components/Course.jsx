@@ -25,7 +25,7 @@ function Course({
             </Typography>
           </div>
           <div className="desc-div">
-            <Typography className="course-description" variant="h6">
+            <Typography className="course-description" variant="subtitle1">
               {description}
             </Typography>
           </div>

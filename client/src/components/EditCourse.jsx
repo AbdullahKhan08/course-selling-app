@@ -1,10 +1,9 @@
 import React from 'react'
 import '../Styles/EditCourse.css'
-import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
-import ErrorComponent from './ErrorComponent'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { InputAdornment } from '@mui/material'
+import ErrorComponent from './ErrorComponent'
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
@@ -24,14 +23,6 @@ function EditModal() {
 
   const navigate = useNavigate()
   const location = useLocation()
-  const previousPathRef = useRef(null)
-
-  useEffect(() => {
-    previousPathRef.current = location.pathname
-  }, [location.pathname])
-
-  console.log(previousPathRef.current)
-
   const id = location.state?.id
 
   const [title, setTitle] = useState('')
@@ -70,11 +61,11 @@ function EditModal() {
           authorization: 'Bearer ' + localStorage.getItem('token'),
         },
       }).then((response) => {
-        // console.log(response.json())
         response.json().then((data) => {
           console.log(data.course)
           if (response.status === 200) {
             let currentCourse = data.course
+            console.log(currentCourse.published)
             setTitle(currentCourse.title)
             setDescription(currentCourse.description)
             setImage(currentCourse.image)
@@ -93,7 +84,7 @@ function EditModal() {
 
   function handleUpdate(id) {
     const updateData = {}
-
+    console.log('hi from update card')
     if (updatedTitle) {
       updateData.title = updatedTitle
     }
@@ -178,7 +169,7 @@ function EditModal() {
 
                 <div className="edit-price" pt>
                   <Typography className="text-margin" variant="h6">
-                    {price}
+                    {price} $
                   </Typography>
                 </div>
 

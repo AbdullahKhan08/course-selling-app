@@ -7,8 +7,6 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import { useNavigate } from 'react-router-dom'
 
 const SingleCourse = ({ title, published, id, handleDelete, handleEdit }) => {
-  const navigate = useNavigate()
-
   return (
     <div className="singleCourseContainer">
       <Card className="cardDesign">
