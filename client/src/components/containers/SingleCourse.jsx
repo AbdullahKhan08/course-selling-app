@@ -4,7 +4,7 @@ import './SingleCourse.css'
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 
-const SingleCourse = ({ title, published, id, handleDelete, handleEdit }) => {
+const SingleCourse = ({ _id, title, published, handleDelete, handleEdit }) => {
   return (
     <div className="singleCourseContainer">
       <Card className="cardDesign">
@@ -34,7 +34,7 @@ const SingleCourse = ({ title, published, id, handleDelete, handleEdit }) => {
               <Button
                 className="button-icon"
                 size="small"
-                onClick={() => handleEdit(id)}
+                onClick={() => handleEdit(_id)}
                 variant="contained"
                 color="success"
               >
@@ -45,7 +45,7 @@ const SingleCourse = ({ title, published, id, handleDelete, handleEdit }) => {
               <Button
                 className="button-icon"
                 size="small"
-                onClick={() => handleDelete(id)}
+                onClick={() => handleDelete(_id)}
                 variant="contained"
                 color="error"
               >

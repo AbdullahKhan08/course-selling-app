@@ -23,7 +23,8 @@ function EditModal() {
 
   const navigate = useNavigate()
   const location = useLocation()
-  const id = location.state?.id
+  const _id = location.state?._id ?? ''
+  console.log(_id)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -44,7 +45,6 @@ function EditModal() {
       headers: { authorization: 'Bearer ' + localStorage.getItem('token') },
     }).then((response) => {
       response.json().then((data) => {
-        console.log(data)
         setUserEmail(data.username)
       })
     })
@@ -54,7 +54,7 @@ function EditModal() {
 
   useEffect(() => {
     function fetchCourse() {
-      const response = fetch('http://localhost:3000/admin/courses/' + id, {
+      const response = fetch('http://localhost:3000/admin/courses/' + _id, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -62,15 +62,13 @@ function EditModal() {
         },
       }).then((response) => {
         response.json().then((data) => {
-          console.log(data.course)
           if (response.status === 200) {
             let currentCourse = data.course
-            console.log(currentCourse.published)
-            setTitle(currentCourse.title)
-            setDescription(currentCourse.description)
-            setImage(currentCourse.image)
-            setPrice(currentCourse.price)
-            setPublished(currentCourse.published)
+            setTitle(currentCourse[0].title)
+            setDescription(currentCourse[0].description)
+            setImage(currentCourse[0].image)
+            setPrice(currentCourse[0].price)
+            setPublished(currentCourse[0].published)
           }
         })
       })
@@ -82,9 +80,9 @@ function EditModal() {
   // edit request here
   // put request fetch
 
-  function handleUpdate(id) {
+  function handleUpdate(_id) {
     const updateData = {}
-    console.log('hi from update card')
+
     if (updatedTitle) {
       updateData.title = updatedTitle
     }
@@ -102,7 +100,7 @@ function EditModal() {
       updateData.published = updatedPublished
     }
 
-    const response = fetch('http://localhost:3000/admin/courses/' + id, {
+    const response = fetch('http://localhost:3000/admin/courses/' + _id, {
       method: 'PUT',
       body: JSON.stringify(updateData),
       headers: {
@@ -111,10 +109,7 @@ function EditModal() {
       },
     }).then((response) => {
       response.json().then((data) => {
-        // console.log(data)
-        // console.log(data.title)
         if (response.status === 200) {
-          // navigate('/dashboard')
           if (updatedTitle) {
             setTitle(updatedTitle)
           }
@@ -130,12 +125,10 @@ function EditModal() {
           if (updatedPublished === true || updatedPublished === false) {
             setPublished(updatedPublished)
           }
-          // alert(data.msg)
         }
       })
     })
 
-    // fetchCourse()
     setUpdatedTitle('')
     setUpdatedDescription('')
     setUpdatedImage('')
@@ -147,7 +140,7 @@ function EditModal() {
     return (
       <>
         <Typography className="heading text-center" variant="h3">
-          Edit course
+          Edit course details
         </Typography>
         <div className="main-container">
           <div className="cardDiv">
@@ -300,7 +293,7 @@ function EditModal() {
                     <Button
                       size={'large'}
                       variant="contained"
-                      onClick={() => handleUpdate(id)}
+                      onClick={() => handleUpdate(_id)}
                       color="success"
                     >
                       Edit Course

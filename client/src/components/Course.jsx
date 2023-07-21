@@ -4,12 +4,12 @@ import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 
 function Course({
+  _id,
   title,
   description,
   image,
   price,
   published,
-  id,
   handleDelete,
   handleEdit,
 }) {
@@ -56,7 +56,7 @@ function Course({
                 className="button-icon"
                 variant="contained"
                 color="primary"
-                onClick={() => handleEdit(id)}
+                onClick={() => handleEdit(_id)}
               >
                 <BorderColorOutlinedIcon className="btn-icons" />
               </Button>
@@ -65,7 +65,7 @@ function Course({
             <div className="course-btn-item">
               <Button
                 size="small"
-                onClick={() => handleDelete(id)}
+                onClick={() => handleDelete(_id)}
                 className="button-icon"
                 variant="contained"
                 color="error"

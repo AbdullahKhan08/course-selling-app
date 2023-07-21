@@ -23,7 +23,6 @@ function Signup() {
     }).then((response) => {
       response.json().then((data) => {
         try {
-          console.log(data)
           if (response.status === 201) {
             alert(data.msg)
             navigate('/signin')

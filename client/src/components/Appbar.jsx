@@ -23,7 +23,6 @@ function Appbar() {
       headers: { authorization: 'Bearer ' + localStorage.getItem('token') },
     }).then((response) => {
       response.json().then((data) => {
-        console.log(data)
         setUserEmail(data.username)
       })
     })

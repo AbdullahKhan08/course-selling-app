@@ -56,7 +56,6 @@ function AddCourse() {
       },
     }).then((response) => {
       response.json().then((data) => {
-        console.log(data)
         try {
           if (response.status == 201) {
             alert('Course added succesfully !')

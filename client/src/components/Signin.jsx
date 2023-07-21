@@ -26,9 +26,7 @@ function Signin() {
         password: password,
       },
     }).then((resp) => {
-      console.log(typeof resp.status)
       resp.json().then((data) => {
-        console.log(data)
         if (resp.status === 200) {
           localStorage.setItem('token', data.token)
           window.location = '/dashboard'

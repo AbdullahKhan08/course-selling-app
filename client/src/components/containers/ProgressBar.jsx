@@ -25,7 +25,6 @@ function ProgressBar() {
       },
     }).then((response) => {
       response.json().then((d) => {
-        console.log(d)
         setPublished(d.published)
         setNotPublished(d.notPublished)
         console.log('page render')

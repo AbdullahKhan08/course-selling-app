@@ -18,26 +18,23 @@ function CourseFeed() {
     })
   }, [courses])
 
-  function handleEditClick(id) {
+  function handleEditClick(_id) {
     navigate('/EditCourse', {
-      state: { id: id },
+      state: { _id: _id },
     })
   }
 
-  function ondeleteClick(id) {
-    const response = fetch('http://localhost:3000/admin/courses/' + id, {
+  function ondeleteClick(_id) {
+    const response = fetch('http://localhost:3000/admin/courses/' + _id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     }).then((response) => {
-      response.json().then((data) => {
-        console.log(data)
-        setCourses(courses.filter((course) => course.id !== id))
-      })
+      response.json().then((data) => {})
+      window.location = '/dashboard'
     })
-    window.location = '/dashboard'
   }
 
   return (
@@ -52,14 +49,15 @@ function CourseFeed() {
         <div>
           {courses?.map((course) => (
             <SingleCourse
-              key={course.id}
-              id={course.id}
+              key={course._id}
+              _id={course._id}
               title={course.title}
               published={course.published}
               handleDelete={ondeleteClick}
               handleEdit={handleEditClick}
             />
           ))}
+          {courses.title}
         </div>
       </div>
     </div>
