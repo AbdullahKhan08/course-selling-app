@@ -1,4 +1,6 @@
 const express = require('express')
+const dotenv = require('dotenv')
+dotenv.config()
 const app = express()
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
@@ -8,8 +10,9 @@ const mongoose = require('mongoose')
 app.use(cors())
 app.use(bodyParser.json())
 
-const ADMIN_SECRET = 'Dan66g3rS3cret'
-const USER_SECRET = 'Da44ngS3cret'
+const ADMIN_SECRET = process.env.ADMIN_SECRET
+const USER_SECRET = process.env.USER_SECRET
+const MONGO_URL = process.env.MONGO_URI
 
 // define mongoose schema
 
@@ -58,9 +61,19 @@ const Course = mongoose.model('Course', courseSchema)
 
 // connect to mongo db
 
-mongoose.connect(
-  'mongodb+srv://abdullahkhan171202:abdullah6544@nodeexpressprojects.j27h5pu.mongodb.net/course-selling-app'
-)
+const connectDB = (url) => {
+  return mongoose.connect(url)
+}
+
+const start = async () => {
+  try {
+    await connectDB(MONGO_URL)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+start()
 
 const adminAuthentication = async (req, res, next) => {
   const authHeader = req.headers.authorization
